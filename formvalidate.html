@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Javascript validation</title>
+    <link rel="stylesheet" href="formvalidate.css">
+    <script>
+        var win;
+        function validate(){
+            if(isNaN(frm.txt1.value)==false){
+                alert("Invalid attempt for the name");
+                frm.txt.focus();
+                return false;
+            }
+            if(frm.txt2.value==""){
+                alert("Please enter password");
+                frm.txt2.focus;
+                return false;
+            }
+            if(frm.txt3.value !=frm.txt2.value){
+                alert("Invalid attempt for password!");
+                frm.txt3.focus();
+                return false;
+            }
+            if((frm.txt4.value=="") || (frm.txt4.value<0) || (frm.txt4.value>100) || (isNaN(frm.txt4.value)==true)){
+                alert("Invalid attempt for age");
+                frm.txt4.focus();
+                return false;
+            }
+            var email=frm.txt5.value;
+            if(!email.match(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/)){
+                alert("Invalid attempt for email");
+                frm.txt5.focus();
+                return false;
+            }
+            alert("Form filling successful");
+            return true;
+        }
+
+        function Calculate(){
+            var num1=window.prompt("Please Enter First value","Value-1");
+            var num2=window.prompt("Please Enter second value","Value-2");
+            var ans=parseInt(num1)+parseInt(num2);
+            window.alert("The answer is "+ans);
+        }
+        function Open_win(){
+            win=window.open('https://www.w3schools.com/');
+        }
+        function Print(){
+            win=window.print();
+            //document.frm.txt1.value="asd";
+            //document.frm.element[0].value="asd";
+            //document.forms["frm"].element["txt1"].value="asd";
+        }
+        function CHK(){
+            var ans=window.confirm("Are you sure?");
+            if (ans==false){
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="page">
+    <h1>registration Form</h1>
+    <form name="frm">
+        <table>
+            <tr>
+                <td>Your name:</td><td><input type="text" name="txt1"></td>
+            </tr>
+            <tr>
+                <td>Password:</td><td><input type="password" name="txt2"></td>
+            </tr>
+            <tr>
+                <td>Retype password:</td><td><input type="password" name="txt3"></td>
+            </tr>
+            <tr>
+                <td>Age:</td><td><input type="text" name="txt4"></td>
+            </tr>
+            <tr>
+                <td>Email:</td><td><input type="text" name="txt5"></td>
+            </tr>
+        </table>
+            <input type="radio"> I agree with terms & conditions
+        <br><br>
+            <input type="button" value="Register" onclick="return validate();" class="btn">
+            <input type="button" value="Calculate" onclick="Calculate();" class="btn">
+            <input type="button" value="Open" onclick="Open_win();" class="btn">
+            <input type="button" value="Print" onclick="Print();" class="btn">
+            <input type="reset" value="Clear" onclick="return CHK();" class="btn">
+        
+    </form>
+</div>
+</body>
+</html>
